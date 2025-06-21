@@ -1,0 +1,48 @@
+pipeline{
+   agent any
+   parameters {
+
+    string description: 'hello enter your name', name: 'firstname'
+    string description: 'enter the market name', name: 'market'
+    string description: 'enter the item bought ', name: 'item'
+    string description: 'enter the time you arrived home', name: 'time'
+   }
+   stages{
+
+
+    stage("what is your name?"){
+          
+        
+           steps{
+              
+               echo "Hi, I am Mrs ${params.firstname}"
+       }
+   }
+   stage("Market"){
+          
+        
+           steps{
+              
+               echo "I went to ${params.market} market"
+       }
+   }
+   stage("Item Bought"){
+          
+        
+           steps{
+              
+               echo "I bought ${params.item}"
+       }
+   }
+   stage("Time arrived at home"){
+          
+        
+           steps{
+              
+               echo "I got home at ${params.time}"
+       }
+   }
+   }
+   }
+   
+

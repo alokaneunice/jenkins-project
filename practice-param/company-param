@@ -1,0 +1,30 @@
+pipeline{
+   agent any
+   parameters {
+
+    string description: 'hello enter your name', name: 'firstname'
+    string description: 'enter your last name', name: 'lastname'
+    string description: 'enter your department', name: 'dept'
+    string description: 'enter your company name', name: 'company'
+   }
+   stages{
+
+
+    stage("Tell us your name"){
+          
+        
+           steps{
+              
+               echo "Hi my name is ${params.firstname} ${params.lastname}"
+       }
+   }
+   stage("Tell us about your company"){
+          
+        
+           steps{
+              
+               echo "I work at ${params.company} I am in ${params.dept} department"
+       }
+   }
+   }
+}
