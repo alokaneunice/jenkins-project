@@ -1,53 +1,54 @@
 pipeline{
-agent any
+    agent any
 parameters {
-choice choices: ['QA', 'Staging', 'Dev', 'Production'], description: '''Choose the environment to deploy
+    choice choices: ['QA', 'Staging', 'Dev', 'Production'], description: '''Choose the environment to deploy
 ''', name: 'Appenv'
 }
 stages{
-stage("deploy to dev"){
-when {
-expression {
+    stage("deploy to dev"){
+        when {
+            expression {
 //return params.Appenv
-return params.Appenv=="Dev"
+                return params.Appenv=="Dev"
 }
+        }
+steps{
+    echo "welcome please deploy to ${params.Appenv}"
 }
+    }
+    stage("deploy to Production"){
+        when {
+            expression {
+
+//return params.Appenv
+                return params.Appenv=="Production"
+            }
+        }
 steps{
 echo "welcome please deploy to ${params.Appenv}"
 }
-}
-stage("deploy to Production"){
-when {
-expression {
-//return params.Appenv
-return params.Appenv=="Production"
-}
-}
+    }
+    stage("deploy to QA"){
+        when {
+            expression {
+                //return params.Appenv
+                return params.Appenv=="QA"
+            }
+        }
 steps{
-echo "welcome please deploy to ${params.Appenv}"
+    echo "welcome please deploy to ${params.Appenv}"
 }
-}
-stage("deploy to QA"){
-when {
-expression {
-//return params.Appenv
-return params.Appenv=="QA"
-}
-}
+    }
+    stage("deploy to stagging"){
+        when {
+            expression {
+                //return params.Appenv
+                return params.Appenv=="Staging"
+            }
+        }
 steps{
-echo "welcome please deploy to ${params.Appenv}"
+    echo "welcome please deploy to ${params.Appenv}"
 }
-}
-stage("deploy to stagging"){
-when {
-expression {
-//return params.Appenv
-return params.Appenv=="Staging"
-}
-}
-steps{
-echo "welcome please deploy to ${params.Appenv}"
-}
-}
+    }
 }
 }
